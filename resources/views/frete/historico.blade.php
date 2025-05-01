@@ -1,12 +1,13 @@
+<x-layout>
     <div class="text-center p-6 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-t-lg">
         <h1 class="text-3xl font-bold">
             Histórico de encomendas
         </h1>
         <p class="mt-4 text-lg">
-            Cliente: João da Silva
+            Cliente: {{ $cliente->nome }}
         </p>
     </div>
-
+    
     <div class="max-w-full mt-8 mx-auto bg-white rounded-lg shadow-sm">
         <div class="text-center p-6">
             <h1 class="text-2xl font-semibold text-gray-800">
@@ -31,28 +32,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="hover:bg-gray-50 transition-colors border-b">
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <a href="#" class="underline">
-                            ABC123456
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        São Paulo
-                    </td>
-                    <td class="px-6 py-4">
-                        Rio de Janeiro
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="px-2 py-1 rounded-full bg-green-500 text-white">
-                            Entregue
-                        </span>
-                    </td>
-                </tr>
+                @foreach ($cliente->enviados as $frete )
+                    <tr class="hover:bg-gray-50 transition-colors border-b">
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <a href="{{ route('frete.rastreamento', ['codigo_rastreio' => $frete->codigo_rastreio]) }}" class="underline">
+                                {{ $frete->codigo_rastreio }}
+                            </a>
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $frete->origem }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $frete->destino }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 py-1 rounded-full bg-green-500 text-white">
+                                {{ $frete->status }}
+                            </span>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
-
+    
     <div class="max-w-full mt-8 mx-auto bg-white rounded-lg shadow-sm">
         <div class="text-center p-6">
             <h1 class="text-2xl font-semibold text-gray-800">
@@ -77,24 +80,27 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="hover:bg-gray-50 transition-colors border-b">
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <a href="#" class="underline">
-                            LMN456789
-                        </a>
-                    </td>
-                    <td class="px-6 py-4">
-                        Porto Alegre
-                    </td>
-                    <td class="px-6 py-4">
-                        Curitiba
-                    </td>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <span class="px-2 py-1 rounded-full bg-blue-500 text-white">
-                            Enviado
-                        </span>
-                    </td>
-                </tr>
+                @foreach ($cliente->recebidos as $frete )
+                    <tr class="hover:bg-gray-50 transition-colors border-b">
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <a href="{{ route('frete.rastreamento', ['codigo_rastreio' => $frete->codigo_rastreio]) }}" class="underline">
+                                {{ $frete->codigo_rastreio }}
+                            </a>
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $frete->origem }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ $frete->destino }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <span class="px-2 py-1 rounded-full bg-green-500 text-white">
+                                {{ $frete->status }}
+                            </span>
+                        </td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
+</x-layout>    

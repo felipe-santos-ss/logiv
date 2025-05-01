@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Laravel</title>
+        <title>Logiv</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,7 +16,7 @@
         <nav class="fixed top-0 left-0 right-0 bg-white border-b border-gray-200 z-50">
             <div class="container mx-auto px-4 h-16 flex justify-center items-center">
                 <a href="#">
-                    <img src="/logiv-logo.png" alt="Logiv" class="h-12">
+                    <img src="/logo-logiv.png" alt="Logiv" class="h-12">
                 </a>
             </div>
         </nav>
